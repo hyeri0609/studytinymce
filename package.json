@@ -1,0 +1,23 @@
+{
+  "name": "studytinymce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/http-server public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyeri0609/studytinymce.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hyeri0609/studytinymce/issues"
+  },
+  "homepage": "https://github.com/hyeri0609/studytinymce#readme",
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
+}
