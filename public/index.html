@@ -7,7 +7,7 @@
 <script type="text/javascript">
     tinymce.init({
         selector: '#mytextarea',
-        toolbar: 'undo redo | styleselect | bold italic',
+        toolbar: 'undo redo | bold italic underline strikethrough',
         menubar: false,
     width: 600,
     height: 300,
@@ -31,6 +31,19 @@
     <form method="post">
     <div id="myeditablediv">Click here to edit!</div>
   </form>
+  <p onclick="check()">check</p>
+  
+  
+  
+  <br/><hr/>
 
+          <p><span style="text-decoration: line-through;" data-mce-style="text-decoration: line-through;">Hello, World! </span>&nbsp;&nbsp;&nbsp; sdfeerwt&nbsp; ewrwerwer<br></p><p><span style="text-decoration: underline;" data-mce-style="text-decoration: underline;"><strong>wertert</strong></span><br data-mce-bogus="1"></p><p><em>werwetert</em></p><p><em><br data-mce-bogus="1"></em></p><p><em>ภาษาไทย<br data-mce-bogus="1"></em></p><p></p>
+          
+<script type="text/javascript">
+function check() {
+  var elem = document.getElementById('mytextarea');
+  console.log(elem.value);
+}
+</script>
 </body>
 </html>
