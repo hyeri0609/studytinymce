@@ -24,8 +24,12 @@
 
 <body>
 <h1>TinyMCE Quick Start Guide</h1>
-  <form method="post">
-    <textarea id="mytextarea">Hello, World!</textarea>
+  <form method="post" >
+    <textarea id="mytextarea"><p><strong>Hello, World!</strong> test <span style="text-decoration: line-through;">yu</span></p>
+<p>&nbsp;</p>
+<p>ttt</p>
+<p>&nbsp;</p>
+<p>yyy</p></textarea>
   </form>
   
     <form method="post">
@@ -41,8 +45,9 @@
           
 <script type="text/javascript">
 function check() {
-  var elem = document.getElementById('mytextarea');
-  console.log(elem.value);
+  var editor = tinymce.get('mytextarea');
+  var content = editor.getContent();
+  console.log('"' + content + '"');
 }
 </script>
 </body>
