@@ -9,45 +9,62 @@
         selector: '#mytextarea',
         toolbar: 'undo redo | bold italic underline strikethrough',
         menubar: false,
-    width: 600,
-    height: 300,
-    statusbar: false
+        width: 200,
+        height: 100,
+        statusbar: false
     });
-    
-      tinymce.init({
-    selector: '#myeditablediv',
-    inline: true
-  });
+    tinymce.init({
+        selector: '#myeditablediv',
+        inline: true
+        
+    });
 </script>
 
 </head>
 
 <body>
 <h1>TinyMCE Quick Start Guide</h1>
-  <form method="post" >
-    <textarea id="mytextarea"><p><strong>Hello, World!</strong> test <span style="text-decoration: line-through;">yu</span></p>
-<p>&nbsp;</p>
-<p>ttt</p>
-<p>&nbsp;</p>
-<p>yyy</p></textarea>
-  </form>
-  
-    <form method="post">
-    <div id="myeditablediv">Click here to edit!</div>
-  </form>
+<form>
+<textarea id="mytextarea"></textarea>
+<br/>
+<button type="button" onclick="submitData()">submit</button> 
+<br/>
+</form>
+<br/><hr/>
+<form method="post">
+<div id="myeditablediv">Click here to edit!</div>
+</form>
   <p onclick="check()">check</p>
   
-  
-  
-  <br/><hr/>
 
-          <p><span style="text-decoration: line-through;" data-mce-style="text-decoration: line-through;">Hello, World! </span>&nbsp;&nbsp;&nbsp; sdfeerwt&nbsp; ewrwerwer<br></p><p><span style="text-decoration: underline;" data-mce-style="text-decoration: underline;"><strong>wertert</strong></span><br data-mce-bogus="1"></p><p><em>werwetert</em></p><p><em><br data-mce-bogus="1"></em></p><p><em>ภาษาไทย<br data-mce-bogus="1"></em></p><p></p>
-          
 <script type="text/javascript">
 function check() {
   var editor = tinymce.get('mytextarea');
   var content = editor.getContent();
-  console.log('"' + content + '"');
+  console.log(content);
+}
+function submitData() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+           if (xhr.status == 200) {
+               console.log(xhr.responseText);
+           }
+           else if (xhr.status == 400) {
+              alert('There was an error 400');
+           }
+           else {
+               alert('something else other than 200 was returned, status: ' + xhr.status);
+           }
+        }
+    };
+
+    xhr.open("POST", "/api/textformat", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var editor = tinymce.get('mytextarea');
+    var content = editor.getContent();
+    xhr.send("data="+content);
 }
 </script>
 </body>
