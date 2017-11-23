@@ -5,27 +5,59 @@
 
 <script src='js/tinymce/tinymce.min.js'></script>
 <script type="text/javascript">
+    var limit_chars = 2000;
     tinymce.init({
         selector: '#mytextarea',
         toolbar: 'undo redo | bold italic underline strikethrough',
         menubar: false,
-        width: 200,
-        height: 100,
-        statusbar: false
+        width: 300,
+        height: 200,
+        statusbar: false,
+        init_instance_callback: function (editor) {
+            editor.on('NodeChange', function (e) {
+              console.log(editor.getContent().length);
+            });
+        }
+
+        // setup: function (ed) {
+        //     //var body = tinymce.get(ed.id).getBody();
+        //     ed.on('keyup', function (e) {
+        //         // var text = tinymce.trim(body.innerText || body.textContent);
+        //         console.log(ed.getContent());
+        //         // var count = CountCharacters();
+        //         // document.getElementById("character_count").innerHTML = "Characters: " + count;
+        //     });
+        // }
     });
     tinymce.init({
         selector: '#myeditablediv',
         inline: true
         
     });
+    
+function tinymceInit() {
+    tinymce.remove();
+    tinymce.init({
+        selector: '#mem_saleproduct_product_detail',
+        height: 280,
+        invalid_elements: "script",
+        plugins: 'lists advlist paste',
+        paste_as_text: true,
+        toolbar: 'undo redo | fontsizeselect | bold italic underline strikethrough | bullist numlist',
+        fontsize_formats: "8px 10px 12px 14px 18px 24px 36px 48px",
+        menubar: false,
+        statusbar: false
+    });
+}
+        
 </script>
 
 </head>
 
 <body>
-<h1>TinyMCE Quick Start Guide</h1>
+<h1>study tinymce</h1>
 <form>
-<textarea id="mytextarea"></textarea>
+<textarea id="mytextarea" maxlength="50"></textarea>
 <br/>
 <button type="button" onclick="submitData()">submit</button> 
 <br/>
